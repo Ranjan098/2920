@@ -49,12 +49,12 @@ bot = Client(
     sudo_user = -1002059297194
     log_channel = -1002082838226
     txt_channel = -1002082838226
-    bot_token= "6778587387:AAFt5GDWxQjXXM6JX6MB1TTNKYPDivrvK4k")
+    bot_token= "6743557600:AAGdbZ-rgsgGBm85QXofKeUYBfk5fpRAv8I")
       
 @bot.on_message(filters.command(["start"])&(filters.chat(auth_users)))
 async def start_handler(bot: Client, m: Message):        
         editable = await m.reply_text(
-            "Hello 👋 **I am a simple video downloader bot**.\n\n**Developer** : Frigo\n**Language** : Python\n**Framework** : Pyrogram\n\n/txt - **To download from TXT file.**\n/terms - **To know our our terms and conditions.**")
+            "Hello 👋 **I am a simple video downloader bot**.\n\n**Developer** : 𝐒𝐇𝐀𝐍𝐊𝐀𝐑\n**Language** : Python\n**Framework** : Pyrogram\n\n/txt - **To download from TXT file.**\n/terms - **To know our our terms and conditions.**")
             
 @bot.on_message(filters.command(["restart"]))
 async def restart_handler(bot: Client, m: Message):
