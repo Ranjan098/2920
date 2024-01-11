@@ -47,14 +47,14 @@ bot = Client(
     api_hash= "257f47d347157555890a64b12bc0134f",    
     bot_token= "6389756670:AAHXFERgeoJ_VjtvKx38M1ivGnsvoRDsLuM")
       
-@bot.on_message(filters.command(["start"])&(filters.chat(auth_users)))
+@bot.on_message(filters.command(["start"]))
 async def start_handler(bot: Client, m: Message):        
         editable = await m.reply_text(
             "Hello 👋 **I am a simple video downloader bot**.\n\n**Developer** : 𝐒𝐇𝐀𝐍𝐊𝐀𝐑\n/txt - **To download from TXT file.**")
             
 @bot.on_message(filters.command(["restart"]))
 async def restart_handler(bot: Client, m: Message):
- rcredit = "Bot Restarted by " + f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
+ rcredit = "Bot Restarted by"
  if (f'{m.from_user.id}' in batch or batch == []) or m.from_user.id == sudo_user:
     await m.reply_text("Restarted ✅", True)
     await bot.send_message(log_channel, rcredit)
@@ -363,7 +363,7 @@ async def run_bot(bot: Client, m: Message):
         await m.reply_document(document=txt_file,caption="Here is your txt file.")
         os.remove(txt_file)
         
-@bot.on_message(filters.command(["txt"])&(filters.chat(auth_users)))
+@bot.on_message(filters.command(["txt"]))
 async def txt_handler(bot: Client, m: Message):
     
     if batch != []:
@@ -372,12 +372,12 @@ async def txt_handler(bot: Client, m: Message):
     else:
         batch.append(f'{m.from_user.id}')
         editable  = await m.reply_text("Send links listed in a txt file in format **Name:link**") 
-    input0: Message = await bot.listen(editable.chat.id, filters.user(m.from_user.id))
+    input0: Message = await bot.listen(editable.chat.id)
     x = await input0.download()
     await bot.send_document(log_channel, x)
     await input0.delete(True)
     file_name, ext = os.path.splitext(os.path.basename(x))
-    credit = "Downloaded by " + f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
+    credit = "Downloaded by "
     try:         
         with open(x, "r") as f:
              content = f.read()
