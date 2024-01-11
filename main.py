@@ -50,7 +50,7 @@ bot = Client(
 @bot.on_message(filters.command(["start"])&(filters.chat(auth_users)))
 async def start_handler(bot: Client, m: Message):        
         editable = await m.reply_text(
-            "Hello 👋 **I am a simple video downloader bot**.\n\n**Developer** : 𝐒𝐇𝐀𝐍𝐊𝐀𝐑\n**Language** : Python\n**Framework** : Pyrogram\n\n/txt - **To download from TXT file.**\n/terms - **To know our our terms and conditions.**")
+            "Hello 👋 **I am a simple video downloader bot**.\n\n**Developer** : 𝐒𝐇𝐀𝐍𝐊𝐀𝐑\n/txt - **To download from TXT file.**")
             
 @bot.on_message(filters.command(["restart"]))
 async def restart_handler(bot: Client, m: Message):
@@ -511,7 +511,7 @@ async def txt_handler(bot: Client, m: Message):
             else:
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'               
             try:
-                Show = f"**Trying To Download:-**\n\n**Name :-** `{name}`\n**Quality :-** `{res}`\n\n**Piracy is illegal 🚫**\n\nEnter /terms To know our terms and conditions."
+                Show = f"**Trying To Download:-**\n\n**Name :-** `{name}`\n**Quality :-** `{res}`"
                 prog = await m.reply_text(Show)
                 cc = f'**Index: **{str(count).zfill(3)}\n**File Name: **{name}\n**Batch: **{b_name}\n\n**Downloaded by:**{creditx}'
                 if cmd == "pdf" in url or ".pdf"  in url or "drive"  in url:
@@ -525,7 +525,7 @@ async def txt_handler(bot: Client, m: Message):
                         await copy.copy(chat_id = log_channel)
                         count+=1
                         await reply.delete (True)
-                        time.sleep(10)
+                        time.sleep(1)
                         os.remove(ka)
                         time.sleep(3)
                     except FloodWait as e:
@@ -545,7 +545,7 @@ async def txt_handler(bot: Client, m: Message):
                 if "NoLinkFound" != url:
                  count+=1
                 await bot.send_message(log_channel, f"**Failed To Download ❌**\n**Name** - {name}\n**Link** - {url}\n**Error** - `{e}`")
-                time.sleep(20)
+                time.sleep(2)
                 continue
     except Exception as e:
         logging.error(e)
