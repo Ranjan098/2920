@@ -5,7 +5,7 @@ from Easy_F import hrb,hrt
 from pyrogram.errors import FloodWait
 
 class Timer:
-    def __init__(self, time_between=5):
+    def __init__(self, time_between=2):
         self.start_time = time.time()
         self.time_between = time_between
 
