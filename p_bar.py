@@ -30,7 +30,7 @@ async def progress_bar(current,total,reply,start):
             tot=hrb(total)
             cur=hrb(current)
             try:
-                await reply.edit(f'`┌ 𝙋𝙧𝙤𝙜𝙧𝙚𝙨𝙨 📈 -【 {perc} 】\n├ 𝙎𝙥𝙚𝙚𝙙 🚀 -【 {sp} 】\n└ 𝙎𝙞𝙯𝙚 📂 -【 {cur} / {tot} 】`')
+                await reply.edit(f"`╭───⌈𝗦𝗵𝗮𝗻𝗸𝗮𝗿 𝐒𝐚𝐥𝐯𝐢⌋──╮\n├{progress_bar}\n├ Size :- {cur} / {tot} \n├ Progress :- {perc}\n├ Speed :- {sp} \n├ ETA :- {eta}\n╰────⌈𝗦𝗵𝗮𝗻𝗸𝗮𝗿⌋────╯")            
                
             except FloodWait as e:
                 time.sleep(e.x)
