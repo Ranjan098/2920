@@ -45,7 +45,7 @@ bot = Client(
     "bot",
     api_id= 20088962,
     api_hash= "257f47d347157555890a64b12bc0134f",    
-    bot_token= "6743557600:AAGdbZ-rgsgGBm85QXofKeUYBfk5fpRAv8I")
+    bot_token= "6389756670:AAHXFERgeoJ_VjtvKx38M1ivGnsvoRDsLuM")
       
 @bot.on_message(filters.command(["start"])&(filters.chat(auth_users)))
 async def start_handler(bot: Client, m: Message):        
