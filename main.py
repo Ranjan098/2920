@@ -454,8 +454,7 @@ async def txt_handler(bot: Client, m: Message):
         count = 1
     else:
         count = int(raw_text)   
-    try:
-        await bot.send_message(f"**•File name** - `{file_name}`({raw_text0})\n**•Total Links Found In TXT** - `{len(links)}`\n**•Starts from** - `{raw_text}`\n**•Resolution** - `{res}`({raw_text22})\n**•Caption** - `{raw_text7}`\n**•Thumbnail** - `{thumb}`\n\n©{credit}")
+    try:  	
         for i in range(count-1, len(links)):
             urlx = links[i].split('://', 1)[1].split(' ', 1)[0] if '://' in links[i] else 'nolinkfound'
             urly =  'https://'  + urlx if urlx != 'nolinkfound' else 'NoLinkFound'
@@ -543,7 +542,7 @@ async def txt_handler(bot: Client, m: Message):
                 await m.reply_text(f"**Failed To Download ❌**\n**Name** - {name}\n**Link** - `{urlm}`")
                 if "NoLinkFound" != url:
                  count+=1
-                await bot.send_message(f"**Failed To Download ❌**\n**Name** - {name}\n**Link** - {url}\n**Error** - `{e}`")
+               # await bot.send_message(f"**Failed To Download ❌**\n**Name** - {name}\n**Link** - {url}\n**Error** - `{e}`")
                 time.sleep(2)
                 continue
     except Exception as e:
