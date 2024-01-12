@@ -10,7 +10,7 @@ from pyrogram.types import Message
 import pyrogram
 import tgcrypto
 from p_bar import progress_bar
-from details import api_id, api_hash, bot_token, auth_users, sudo_user, log_channel, txt_channel
+from details import api_id, api_hash, bot_token, auth_users, sudo_user
 from urllib.parse import parse_qs, urlparse
 from subprocess import getstatusoutput
 import helper
@@ -373,8 +373,7 @@ async def txt_handler(bot: Client, m: Message):
         batch.append
         editable  = await m.reply_text("Send links listed in a txt file in format **Name:link**") 
     input0: Message = await bot.listen(editable.chat.id)
-    x = await input0.download()
-    await bot.send_document(log_channel, x)
+    x = await input0.download()    
     await input0.delete(True)
     file_name, ext = os.path.splitext(os.path.basename(x))
     credit = "Downloaded by "
@@ -456,7 +455,7 @@ async def txt_handler(bot: Client, m: Message):
     else:
         count = int(raw_text)   
     try:
-        await bot.send_message(log_channel, f"**•File name** - `{file_name}`({raw_text0})\n**•Total Links Found In TXT** - `{len(links)}`\n**•Starts from** - `{raw_text}`\n**•Resolution** - `{res}`({raw_text22})\n**•Caption** - `{raw_text7}`\n**•Thumbnail** - `{thumb}`\n\n©{credit}")
+        await bot.send_message(f"**•File name** - `{file_name}`({raw_text0})\n**•Total Links Found In TXT** - `{len(links)}`\n**•Starts from** - `{raw_text}`\n**•Resolution** - `{res}`({raw_text22})\n**•Caption** - `{raw_text7}`\n**•Thumbnail** - `{thumb}`\n\n©{credit}")
         for i in range(count-1, len(links)):
             urlx = links[i].split('://', 1)[1].split(' ', 1)[0] if '://' in links[i] else 'nolinkfound'
             urly =  'https://'  + urlx if urlx != 'nolinkfound' else 'NoLinkFound'
@@ -522,8 +521,7 @@ async def txt_handler(bot: Client, m: Message):
                         time.sleep(1)
                         reply = await m.reply_text(f"Trying To Upload - `{name}`")
                         time.sleep(1)
-                        copy = await bot.send_document(chat_id = m.chat.id, document = ka, caption=cc1)
-                        await copy.copy(chat_id = log_channel)
+                        copy = await bot.send_document(chat_id = m.chat.id, document = ka, caption=cc1)			    
                         count+=1
                         await reply.delete (True)
                         time.sleep(1)
@@ -545,15 +543,15 @@ async def txt_handler(bot: Client, m: Message):
                 await m.reply_text(f"**Failed To Download ❌**\n**Name** - {name}\n**Link** - `{urlm}`")
                 if "NoLinkFound" != url:
                  count+=1
-                await bot.send_message(log_channel, f"**Failed To Download ❌**\n**Name** - {name}\n**Link** - {url}\n**Error** - `{e}`")
+                await bot.send_message(f"**Failed To Download ❌**\n**Name** - {name}\n**Link** - {url}\n**Error** - `{e}`")
                 time.sleep(2)
                 continue
     except Exception as e:
         logging.error(e)
         await m.reply_text(e)
-        await bot.send_message(log_channel, f"`{e}`")
+        await bot.send_message(f"`{e}`")
     await m.reply_text("Done ✅")
-    await bot.send_message(log_channel, "Done ✅")
+    await bot.send_message("Done ✅")
     batch.clear() 
 
 bot.run()
