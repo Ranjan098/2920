@@ -548,10 +548,8 @@ async def txt_handler(bot: Client, m: Message):
                 continue
     except Exception as e:
         logging.error(e)
-        await m.reply_text(e)
-        await bot.send_message(f"`{e}`")
-    await m.reply_text("Done ✅")
-    await bot.send_message("Done ✅")
+        await m.reply_text(e)        
+    await m.reply_text("Done ✅")	
     batch.clear() 
 
 bot.run()
