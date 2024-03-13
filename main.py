@@ -42,7 +42,7 @@ from pyshorteners import Shortener
 botStartTime = time.time()
 batch = []
 bot = Client("bot",
-             bot_token= "6827672847:AAEaVb_pWe4uZBZZSSYnK00Wp-_IT35ulr4",
+             bot_token= "6746876285:AAGnUDNwDvWu4RfbkSSiQe8gt-2lU-9p-Bk",
              api_id= 20088962,
              api_hash= "257f47d347157555890a64b12bc0134f")
       
